@@ -28,6 +28,11 @@ class DataTables extends \yii\grid\GridView
         $clientOptions = $this->getClientOptions();
         $view = $this->getView();
         $id = $this->tableOptions['id'];
+        DataTablesBootstrapAsset::register($view);
+        if (isset($clientOptions["tableTools"]) || (isset($clientOptions["dom"]) && strpos($clientOptions["dom"], 'T')>=0)){
+            $tableTools = DataTablesTableToolsAsset::register($view);
+            $clientOptions["tableTools"]["sSwfPath"] = $tableTools->baseUrl."/swf/copy_csv_xls_pdf.swf";
+        }
         $options = Json::encode($clientOptions);
         $view->registerJs("$('#$id').DataTable($options);");
         if ($this->showOnEmpty || $this->dataProvider->getCount() > 0) {
