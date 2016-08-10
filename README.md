@@ -1,9 +1,3 @@
-README
-
-This extension provides the DataTables integration for the Yii2 framework.
-
-Latest Stable Version Total Downloads Latest Unstable Version License
-
 Installation
 
 The preferred way to install this extension is through composer.
@@ -11,7 +5,7 @@ The preferred way to install this extension is through composer.
 With Composer installed, you can then install the extension using the following commands:
 
 composer global require "fxp/composer-asset-plugin:~1.0.0"
-composer require --prefer-dist nhockizi/yii2-widget-datatables "*"
+composer require --prefer-dist nhockizi/yii2-widget-datatables "dev-master"
 The first command installs the composer asset plugin which allows managing bower and npm package dependencies through Composer. You only need to run this command once for all. The second command installs the datatables widget.
 
 You can also add (instead of the second command):
