@@ -2,7 +2,6 @@
     "name": "nhockizi/yii2-widget-datatables",
     "description": "DataTables widget for Yii2",
     "type": "yii2-extension",
-    "minimum-stability": "stable",
     "keywords": ["yii2","extension","jquery","datatables","table","javascript","library"],
     "license": "MIT",
     "support": {
