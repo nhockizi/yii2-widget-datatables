@@ -1,0 +1,35 @@
+{
+    "name": "nhockizi/yii2-widgets",
+    "description": "DataTables widget for Yii2",
+    "type": "yii2-extension",
+    "minimum-stability": "stable",
+    "keywords": ["yii2","extension","jquery","datatables","table","javascript","library"],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/nhockizi/yii2-widgets/issues?state=open",
+        "source": "https://github.com/nhockizi/yii2-widgets"
+    },
+    "authors": [
+        {
+            "name": "Lâm Xuân Bảo",
+            "email": "nhockizi@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2":"*",
+        "bower-asset/jquery":">= 1.7.0",
+        "bower-asset/datatables":">= 1.9.4",
+        "bower-asset/datatables-bootstrap3":"*",        
+        "bower-asset/datatables-tabletools":"*"        
+    },
+    "autoload": {
+        "psr-4": {
+            "nhockizi\\datatables\\": ""
+        }
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}
