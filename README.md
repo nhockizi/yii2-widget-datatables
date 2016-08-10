@@ -60,6 +60,8 @@ The TableTools plugin is also available. Specify the DOM and the tableTools sett
 'clientOptions' => [
     "lengthMenu"=> [[20,-1], [20,Yii::t('app',"All")]],
     "info"=>false,
+    "searching"=>false,
+    "lengthChange"=>false,
     "responsive"=>true
 ],
 ...
