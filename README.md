@@ -21,7 +21,7 @@ once for all. The second command installs the datatables widget.
 You can also add (instead of the second command):
 
 ```
-"nhockizi/yii2-widget-datatables": "*"
+"nhockizi/yii2-widget-datatables": "dev-master"
 ```
 
 to the require section of your `composer.json` file.
