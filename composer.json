@@ -12,7 +12,8 @@
     "authors": [
         {
             "name": "Lâm Xuân Bảo",
-            "email": "nhockizi@gmail.com"
+            "email": "nhockizi@gmail.com",
+            "country": "Viet Nam"
         }
     ],
     "require": {
