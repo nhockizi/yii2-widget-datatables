@@ -29,6 +29,9 @@
             "nhockizi\\datatables\\": ""
         }
     },
+    "config": {
+        "preferred-install": "dist"
+    },
     "extra": {
         "asset-installer-paths": {
             "bower-asset-library": "vendor/bower"
