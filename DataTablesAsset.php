@@ -4,12 +4,12 @@ use yii\web\AssetBundle;
 
 class DataTablesAsset extends AssetBundle 
 {
-    public $sourcePath = '@bower/nhockizi-datatables'; 
+    public $sourcePath = '@bower/datatables'; 
     public $css = [
-        "library/css/jquery.dataTables.css",
+        "media/css/jquery.dataTables.css",
     ];
     public $js = [
-        "library/js/jquery.dataTables.js",
+        "media/js/jquery.dataTables.js",
     ];
     public $depends = [
         'yii\web\JqueryAsset',
