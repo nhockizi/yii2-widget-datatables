@@ -3,7 +3,6 @@
     "description": "DataTables widget for Yii2",
     "type": "yii2-extension",
     "minimum-stability": "dev",
-    "prefer-stable": true,
     "keywords": ["yii2","extension","jquery","datatables","table","javascript","library"],
     "license": "MIT",
     "support": {
