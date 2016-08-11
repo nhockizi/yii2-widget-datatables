@@ -1,5 +1,5 @@
 <?php
-namespace nhockizi\widgets;
+namespace nhockizi\datatables;
 
 use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
