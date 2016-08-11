@@ -31,7 +31,7 @@ Usage
 Use DataTables as any other other Yii2 widget.
 
 ```php
-use nhockizi\datatables\DataTables;
+use nhockizi\widgets\DataTables;
 ```
 
 ```php
@@ -72,7 +72,7 @@ You can also use DataTables in the JavaScript layer of your application. To achi
 ```php
 public $depends = [
 ...
-'nhockizi\datatables\DataTablesAsset',
+'nhockizi\widgets\DataTablesAsset',
 ...
 ];
 ```
