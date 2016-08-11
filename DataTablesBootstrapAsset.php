@@ -1,5 +1,5 @@
 <?php
-namespace nhockizi\datatables;
+namespace nhockizi\widgets;
 use yii\web\AssetBundle;
 
 class DataTablesBootstrapAsset extends AssetBundle 
