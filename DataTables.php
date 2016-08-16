@@ -4,46 +4,73 @@ namespace nhockizi\widgets;
 use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Inflector;
 
-class DataTables extends \yii\grid\GridView
+class DataTables extends \yii\base\Widget
 {
-	public $options = [];
-	public $tableOptions = ["class"=>"table table-striped table-bordered","cellspacing"=>"0", "width"=>"100%"];
-	public $clientOptions = [];
-
-	public function init()
+	const COLUMN_TYPE_DATE = 'date';
+    const COLUMN_TYPE_NUM = 'num';
+    const COLUMN_TYPE_NUM_FMT = 'num-fmt';
+    const COLUMN_TYPE_HTML_NUM = 'html-num';
+    const COLUMN_TYPE_HTML_NUM_FMT = 'html-num-fmt';
+    const COLUMN_TYPE_STRING = 'string';
+    const PAGING_SIMPLE = 'simple';
+    const PAGING_SIMPLE_NUMBERS = 'simple_numbers';
+    const PAGING_FULL = 'full';
+    const PAGING_FULL_NUMBERS = 'full_numbers';
+    protected $_options = [];
+    public $id;
+    /**
+     * @var array Html options for table
+     */
+    public $tableOptions = ["class"=>"table table-bordered datatable","cellspacing"=>"0", "width"=>"100%"];
+    public function init()
     {
         parent::init();
-        $this->filterModel = null;
-        $this->dataProvider->sort = false;
-        $this->dataProvider->pagination = false;
-        $this->layout = "{items}";
-        if (!isset($this->tableOptions['id'])) {
-            $this->tableOptions['id'] = 'datatables_'.$this->getId();
+        DataTablesAsset::register($this->getView());
+        $this->initColumns();
+    }
+    public function run()
+    {
+        $id = isset($this->id) ? $this->id : $this->getId();
+        echo Html::beginTag('table', ArrayHelper::merge(['id' => $id], $this->tableOptions));
+        echo Html::endTag('table');
+        $this->getView()->registerJs(
+            'var '.$id.' = $("#' . $id . '").DataTable(' . Json::encode($this->getParams()) . ');
+            $("#'.$id.' tbody").on("click", "button", function () {
+                console.log("ss");
+            } );'
+        );
+    }
+    protected function getParams()
+    {
+        return $this->_options;
+    }
+    protected function initColumns()
+    {
+        if (isset($this->_options['columns'])) {
+            foreach ($this->_options['columns'] as $key => $value) {
+                if (is_string($value)) {
+                    $this->_options['columns'][$key] = ['data' => $value, 'title' => Inflector::camel2words($value)];
+                }
+                if (isset($value['type'])) {
+                    if ($value['type'] == 'link') {
+                        $value['class'] = LinkColumn::className();
+                    }
+                }
+                if (isset($value['class'])) {
+                    $column = \Yii::createObject($value);
+                    $this->_options['columns'][$key] = $column;
+                }
+            }
         }
     }
-
-	public function run()
+    public function __set($name, $value)
     {
-        $clientOptions = $this->getClientOptions();
-        $view = $this->getView();
-        $id = $this->tableOptions['id'];
-        DataTablesBootstrapAsset::register($view);
-        $options = Json::encode($clientOptions);
-        $view->registerJs("$('#$id').DataTable($options);");
-        if ($this->showOnEmpty || $this->dataProvider->getCount() > 0) {
-            $content = preg_replace_callback("/{\\w+}/", function ($matches) {
-                $content = $this->renderSection($matches[0]);
-                return $content === false ? $matches[0] : $content;
-            }, $this->layout);
-        } else {
-            $content = $this->renderEmpty();
-        }
-        echo $content;
+        return $this->_options[$name] = $value;
     }
-    
-	protected function getClientOptions()
+    public function __get($name)
     {
-        return $this->clientOptions;
+        return isset($this->_options[$name]) ? $this->_options[$name] : null;
     }
 }
