@@ -29,7 +29,6 @@ class ButtonColumn extends \yii\base\Object
         if (!isset($this->render)) {
             $this->render = new JsExpression('function render( data, type, row, meta ){
                 var p = ' . Json::encode($this->queryParams) . ';
-                console.log(p);
                 var q = {};
                 for (var i = 0; i < p.length; i++) {
                     q[p[i]] = row[p[i]];
