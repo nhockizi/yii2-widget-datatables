@@ -8,7 +8,7 @@ use yii\helpers\Inflector;
 
 class DataTables extends \yii\base\Widget
 {
-	const COLUMN_TYPE_DATE = 'date';
+    const COLUMN_TYPE_DATE = 'date';
     const COLUMN_TYPE_NUM = 'num';
     const COLUMN_TYPE_NUM_FMT = 'num-fmt';
     const COLUMN_TYPE_HTML_NUM = 'html-num';
@@ -23,7 +23,7 @@ class DataTables extends \yii\base\Widget
     /**
      * @var array Html options for table
      */
-    public $tableOptions = ["class"=>"table table-bordered datatable","cellspacing"=>"0", "width"=>"100%"];
+    public $tableOptions = ["class"=>"display responsive nowrap","cellspacing"=>"0", "width"=>"100%"];
     public function init()
     {
         parent::init();
@@ -35,12 +35,72 @@ class DataTables extends \yii\base\Widget
         $id = isset($this->id) ? $this->id : $this->getId();
         echo Html::beginTag('table', ArrayHelper::merge(['id' => $id], $this->tableOptions));
         echo Html::endTag('table');
-        $this->getView()->registerJs(
-            'var '.$id.' = $("#' . $id . '").DataTable(' . Json::encode($this->getParams()) . ');
-            $("#'.$id.' tbody").on("click", "button", function () {
-                console.log("ss");
-            } );'
-        );
+
+        $option = '';
+        $fields = '';
+        foreach ($this->_options as $key => $value) {
+            if(is_array($value)):
+                if($key == 'fields'):
+                    $fields .= $key.':[';
+                    foreach ($value as $a => $b) {
+                        $fields .= "{ ";
+                        foreach ($b as $c => $d) {
+                            $fields .= $c.": '".$d."',";
+                        }
+                        $fields .= "}, ";
+                    }
+                    $fields .= '],';
+                elseif($key == 'buttons'):
+                    $option .= $key.':[';
+                    foreach ($value as $a => $b) {
+                        $option .= "{ ";
+                        foreach ($b as $c => $d) {
+                            if($c === 'editor' || $c === 'action'){
+                                $option .= $c.": ".$d." , ";
+                            }else{
+                                $option .= $c.": '".$d."' , ";
+                            }
+                        }
+                        $option .= "}, ";
+                    }
+                    $option .= '],';
+                elseif($key == 'select'):
+                    $option .= $key.':{';
+                    foreach ($value as $k => $v) {
+                        $option .= $k.": '".$v."',";
+                    }
+                    $option .= '},';
+                else:
+                    $option .= $key.':[';
+                    foreach ($value as $a => $b) {
+                        $option .= "{ ";
+                        foreach ($b as $c => $d) {
+                            $option .= $c.": '".$d."',";
+                        }
+                        $option .= "}, ";
+                    }
+                    $option .= '],';
+                endif;
+            else:
+                if($value == 'true' || $value == 'false'):
+                    $option .= $key." : ".$value.",";
+                else:
+                    $option .= $key." : '".$value."',";
+                endif;
+            endif;
+        }
+        $this->getView()->registerJs("
+                var editor;
+                editor = new $.fn.dataTable.Editor( {
+                    ajax:'".$this->_options['ajax']."',
+                    'table': '#".$id."',
+                    'idSrc': 'id',
+                    ".$fields."
+                } );
+                var table = $('#".$id."').DataTable( {
+                    ".$option."
+                });
+            ");
     }
     protected function getParams()
     {
@@ -52,15 +112,16 @@ class DataTables extends \yii\base\Widget
             foreach ($this->_options['columns'] as $key => $value) {
                 if (is_string($value)) {
                     $this->_options['columns'][$key] = ['data' => $value, 'title' => Inflector::camel2words($value)];
-                }
-                if (isset($value['type'])) {
-                    if ($value['type'] == 'link') {
-                        $value['class'] = LinkColumn::className();
+                }else{
+                    if (isset($value['type'])) {
+                        if ($value['type'] == 'link') {
+                            $value['class'] = LinkColumn::className();
+                        }
                     }
-                }
-                if (isset($value['class'])) {
-                    $column = \Yii::createObject($value);
-                    $this->_options['columns'][$key] = $column;
+                    if (isset($value['class'])) {
+                        $column = \Yii::createObject($value);
+                        $this->_options['columns'][$key] = $column;
+                    }
                 }
             }
         }
