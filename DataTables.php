@@ -50,20 +50,6 @@ class DataTables extends \yii\base\Widget
                         $fields .= "}, ";
                     }
                     $fields .= '],';
-                elseif($key == 'buttons'):
-                    $option .= $key.':[';
-                    foreach ($value as $a => $b) {
-                        $option .= "{ ";
-                        foreach ($b as $c => $d) {
-                            if($c === 'editor' || $c === 'action'){
-                                $option .= $c.": ".$d." , ";
-                            }else{
-                                $option .= $c.": '".$d."' , ";
-                            }
-                        }
-                        $option .= "}, ";
-                    }
-                    $option .= '],';
                 elseif($key == 'select'):
                     $option .= $key.':{';
                     foreach ($value as $k => $v) {
@@ -75,28 +61,35 @@ class DataTables extends \yii\base\Widget
                     foreach ($value as $a => $b) {
                         $option .= "{ ";
                         foreach ($b as $c => $d) {
-                            $option .= $c.": '".$d."',";
+                            if($c === 'editor' || $c === 'action' || $c === 'render' || $c === 'formMessage'){
+                                $option .= $c.": ".$d." , ";
+                            }else{
+                                $option .= $c.": '".$d."' , ";
+                            }
                         }
                         $option .= "}, ";
                     }
                     $option .= '],';
                 endif;
             else:
-                if($value == 'true' || $value == 'false'):
+                if($value == 'true' || $value == 'false' || $value == 'null'):
                     $option .= $key." : ".$value.",";
                 else:
                     $option .= $key." : '".$value."',";
                 endif;
             endif;
         }
+        // $.extend( $.fn.dataTable.Editor.display.envelope.conf, {
+        //             attach: 'head'
+        //         } );
+        //         var editor;
+        //         editor = new $.fn.dataTable.Editor( {
+        //             ajax:'".$this->_options['ajax']."',
+        //             'table': '#".$id."',
+        //             'idSrc': 'id',
+        //             ".$fields."
+        //         } );
         $this->getView()->registerJs("
-                var editor;
-                editor = new $.fn.dataTable.Editor( {
-                    ajax:'".$this->_options['ajax']."',
-                    'table': '#".$id."',
-                    'idSrc': 'id',
-                    ".$fields."
-                } );
                 var table = $('#".$id."').DataTable( {
                     ".$option."
                 });
