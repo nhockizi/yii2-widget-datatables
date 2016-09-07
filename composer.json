@@ -19,7 +19,7 @@
         "yiisoft/yii2":"*",
         "bower-asset/jquery":">= 1.7.0",
         "bower-asset/datatables":">=1.9.4",
-        "bower-asset/nhockizi-datatables":">= 1.0.0",
+        "bower-asset/nhockizi-datatables":"*",
         "bower-asset/datatables-bootstrap3":"*",        
         "bower-asset/datatables-tabletools":"*"
     },
