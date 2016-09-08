@@ -8,6 +8,7 @@
         "issues": "https://github.com/nhockizi/yii2-widget-datatables/issues?state=open",
         "source": "https://github.com/nhockizi/yii2-widget-datatables"
     },
+    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Lâm Xuân Bảo",
@@ -17,7 +18,8 @@
     ],
     "require": {
         "yiisoft/yii2":"*",
-        "bower-asset/jquery":">= 1.7.0"
+        "bower-asset/jquery":">= 1.7.0",
+        "bower-asset/nhockizi-datatables" : "dev-master"
     },
     "autoload": {
         "psr-4": {
