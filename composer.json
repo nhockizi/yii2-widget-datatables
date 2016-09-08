@@ -17,7 +17,6 @@
         }
     ],
     "require": {
-        "bower-asset/nhockizi-datatables" : "*"
     },
     "autoload": {
         "psr-4": {
