@@ -17,27 +17,9 @@ class DataTablesAsset extends AssetBundle
     public function init()
     {
         parent::init();
-        if (empty($this->js)) {
-            $this->js = ['datatables/media/js/jquery.dataTables' . (YII_ENV_DEV ? '' : '.min') . '.js'];
-        }
-        switch ($this->styling) {
-            case self::STYLING_JUI:
-                $this->depends[] = 'yii\jui\JuiAsset';
-                $this->css[] = 'datatables-plugins/integration/jqueryui/dataTables.jqueryui.css';
-                $this->js[] = 'datatables-plugins/integration/jqueryui/dataTables.jqueryui.min.js';
-                break;
-            case self::STYLING_BOOTSTRAP:
-                $this->depends[] = 'yii\bootstrap\BootstrapAsset';
-                $this->css[] = 'datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css';
-                $this->js[] = 'datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js';
-                break;
-            case self::STYLING_DEFAULT:
-                $this->css[] = 'datatables/media/css/jquery.dataTables' . (YII_ENV_DEV ? '' : '.min') . '.css';
-                break;
-            default;
-        }
-        if ($this->fontAwesome) {
-            $this->css[] = 'dataTables.fontAwesome.css';
-        }
+        // $this->css[] = 'datatables-plugins/integration/jqueryui/dataTables.jqueryui.css';
+        // $this->css[] = 'nhockizi-datatables/library/css/editor.bootstrap.min.css';
+        // $this->js[] = 'nhockizi-datatables/library/js/dataTables.editor.js';
+        // $this->js[] = 'nhockizi-datatables/library/js/editor.bootstrap.min.js';
     }
 } 

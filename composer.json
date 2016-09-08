@@ -18,7 +18,9 @@
     ],
     "require": {
         "yiisoft/yii2":"*",
-        "bower-asset/jquery":">= 1.7.0",
+        "bower-asset/jquery":">= 1.7.0"
+    },
+    "require-dev": {
         "bower-asset/nhockizi-datatables" : ">= 1.0.1"
     },
     "autoload": {
