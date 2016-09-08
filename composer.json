@@ -17,9 +17,6 @@
         }
     ],
     "require": {
-        // "bower-asset/datatables":">=1.9.4",
-        // "bower-asset/datatables-bootstrap3":"*",        
-        // "bower-asset/datatables-tabletools":"*",
         "bower-asset/nhockizi-datatables" : "*"
     },
     "autoload": {
