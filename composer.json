@@ -8,6 +8,7 @@
         "issues": "https://github.com/nhockizi/yii2-widget-datatables/issues?state=open",
         "source": "https://github.com/nhockizi/yii2-widget-datatables"
     },
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Lâm Xuân Bảo",
@@ -16,6 +17,8 @@
         }
     ],
     "require": {
+        "yiisoft/yii2":"*",
+        "bower-asset/jquery":">= 1.7.0",
         "bower-asset/nhockizi-datatables" : ">= 1.0.1"
     },
     "autoload": {
@@ -26,10 +29,7 @@
     "extra": {
         "asset-installer-paths": {
             "npm-asset-library": "vendor/npm",
-            "nhockizi-library": "vendor/bower"
+            "bower-asset-library": "vendor/bower"
         }
-    },
-    "scripts": {
-        "post-install-cmd": "php init --env=Development --overwrite=n"
     }
 }
