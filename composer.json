@@ -15,6 +15,7 @@
             "country": "Viet Nam"
         }
     ],
+    "minimum-stability": "stable",
     "require": {
         "yiisoft/yii2":"*",
         "bower-asset/nhockizi-datatables" : "dev-master"
