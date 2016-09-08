@@ -8,7 +8,6 @@
         "issues": "https://github.com/nhockizi/yii2-widget-datatables/issues?state=open",
         "source": "https://github.com/nhockizi/yii2-widget-datatables"
     },
-    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Lâm Xuân Bảo",
