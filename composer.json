@@ -18,8 +18,7 @@
     ],
     "require": {
         "yiisoft/yii2":"*",
-        "bower-asset/jquery":">= 1.7.0",
-        "bower-asset/nhockizi-datatables" : "dev-master"
+        "bower-asset/jquery":">= 1.7.0"
     },
     "autoload": {
         "psr-4": {
@@ -28,7 +27,11 @@
     },
     "extra": {
         "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
             "bower-asset-library": "vendor/bower"
         }
+    },
+    "scripts": {
+        "post-install-cmd": "php init --env=Development --overwrite=n"
     }
 }
