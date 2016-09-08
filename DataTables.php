@@ -8,7 +8,7 @@ use yii\helpers\Inflector;
 
 class DataTables extends \yii\base\Widget
 {
-    const COLUMN_TYPE_DATE = 'date';
+	const COLUMN_TYPE_DATE = 'date';
     const COLUMN_TYPE_NUM = 'num';
     const COLUMN_TYPE_NUM_FMT = 'num-fmt';
     const COLUMN_TYPE_HTML_NUM = 'html-num';
