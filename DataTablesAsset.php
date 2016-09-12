@@ -10,7 +10,7 @@ class DataTablesAsset extends AssetBundle
     const STYLING_JUI = 'jqueryui';
     public $styling = self::STYLING_DEFAULT;
     public $fontAwesome = false;
-    public $sourcePath = '@bower\nhockizi';
+    public $sourcePath = '@bower/nhockizi-datatables';
     public $depends = [
         'yii\web\JqueryAsset',
     ];
@@ -18,18 +18,18 @@ class DataTablesAsset extends AssetBundle
     {
         parent::init();
         $this->css = [
-            'css/jquery.dataTables.min.css',
-            'css/responsive.dataTables.min.css',
-            'css/buttons.dataTables.min.css',
-            'css/select.dataTables.min.css',
+            'library/css/jquery.dataTables.css',
+            'library/css/responsive.dataTables.css',
+            'library/css/buttons.dataTables.css',
+            'library/css/select.dataTables.css',
         ];
         $this->js = [
-            'js/jquery.dataTables.min.js',
-            'js/dataTables.responsive.min.js',
-            'js/dataTables.buttons.min.js',
-            'js/dataTables.select.min.js',
-            'js/dataTables.editor.js',
-            'js/editor.bootstrap.min.js',
+            'library/js/jquery.dataTables.js',
+            'library/js/dataTables.responsive.js',
+            'library/js/dataTables.buttons.js',
+            'library/js/dataTables.select.js',
+            'library/js/dataTables.editor.js',
+            'library/js/editor.bootstrap.js',
         ];
     }
 } 
