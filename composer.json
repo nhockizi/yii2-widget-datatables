@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "yiisoft/yii2":"*",
+        "yiisoft/yii2":"*"
     },
     "require-dev": {
         "bower-asset/nhockizi-datatables" : ">= 1.0.1"
