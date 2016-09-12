@@ -10,7 +10,7 @@ class DataTablesAsset extends AssetBundle
     const STYLING_JUI = 'jqueryui';
     public $styling = self::STYLING_DEFAULT;
     public $fontAwesome = false;
-    public $sourcePath = '@bower';
+    public $sourcePath = '@bower\nhockizi';
     public $depends = [
         'yii\web\JqueryAsset',
     ];
