@@ -17,9 +17,19 @@ class DataTablesAsset extends AssetBundle
     public function init()
     {
         parent::init();
-        // $this->css[] = 'datatables-plugins/integration/jqueryui/dataTables.jqueryui.css';
-        // $this->css[] = 'nhockizi-datatables/library/css/editor.bootstrap.min.css';
-        // $this->js[] = 'nhockizi-datatables/library/js/dataTables.editor.js';
-        // $this->js[] = 'nhockizi-datatables/library/js/editor.bootstrap.min.js';
+        $this->css = [
+            'css/jquery.dataTables.min.css',
+            'css/responsive.dataTables.min.css',
+            'css/buttons.dataTables.min.css',
+            'css/select.dataTables.min.css',
+        ];
+        $this->js = [
+            'js/jquery.dataTables.min.js',
+            'js/dataTables.responsive.min.js',
+            'js/dataTables.buttons.min.js',
+            'js/dataTables.select.min.js',
+            'js/dataTables.editor.js',
+            'js/editor.bootstrap.min.js',
+        ];
     }
 } 
