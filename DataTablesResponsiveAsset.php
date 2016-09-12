@@ -3,7 +3,7 @@ namespace nhockizi\widgets;
 
 use yii\web\AssetBundle;
 
-class DataTablesAsset extends AssetBundle
+class DataTablesResponsiveAsset extends AssetBundle
 {
     const STYLING_DEFAULT = 'default';
     const STYLING_BOOTSTRAP = 'bootstrap';
@@ -18,16 +18,10 @@ class DataTablesAsset extends AssetBundle
     {
         parent::init();
         $this->css = [
-            'library/css/jquery.dataTables.css',
-            'library/css/buttons.dataTables.css',
-            'library/css/select.dataTables.css',
+            'library/css/responsive.dataTables.css'
         ];
         $this->js = [
-            'library/js/jquery.dataTables.js',
-            'library/js/dataTables.buttons.js',
-            'library/js/dataTables.select.js',
-            'library/js/dataTables.editor.js',
-            'library/js/editor.bootstrap.js',
+            'library/js/dataTables.responsive.js'
         ];
     }
 } 

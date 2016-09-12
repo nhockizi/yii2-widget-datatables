@@ -20,6 +20,7 @@ class DataTables extends \yii\base\Widget
     const PAGING_FULL_NUMBERS = 'full_numbers';
     protected $_options = [];
     public $id;
+    public $table_class = '';
     /**
      * @var array Html options for table
      */
@@ -32,10 +33,13 @@ class DataTables extends \yii\base\Widget
     }
     public function run()
     {
+        if($this->table_class != ''){
+            $this->tableOptions["class"] = $this->table_class;
+            DataTablesResponsiveAsset::register($this->getView());
+        }
         $id = isset($this->id) ? $this->id : $this->getId();
         echo Html::beginTag('table', ArrayHelper::merge(['id' => $id], $this->tableOptions));
         echo Html::endTag('table');
-
         $option = '';
         $fields = '';
         foreach ($this->_options as $key => $value) {
@@ -79,16 +83,6 @@ class DataTables extends \yii\base\Widget
                 endif;
             endif;
         }
-        // $.extend( $.fn.dataTable.Editor.display.envelope.conf, {
-        //             attach: 'head'
-        //         } );
-        //         var editor;
-        //         editor = new $.fn.dataTable.Editor( {
-        //             ajax:'".$this->_options['ajax']."',
-        //             'table': '#".$id."',
-        //             'idSrc': 'id',
-        //             ".$fields."
-        //         } );
         $this->getView()->registerJs("
                 var table = $('#".$id."').DataTable( {
                     ".$option."
