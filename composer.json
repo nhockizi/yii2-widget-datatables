@@ -18,9 +18,6 @@
     "require": {
         "yiisoft/yii2":"*"
     },
-    "require-dev": {
-        "bower-asset/nhockizi-datatables" : "dev-master"
-    },
     "autoload": {
         "psr-4": {
             "nhockizi\\widgets\\": ""
